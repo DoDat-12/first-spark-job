@@ -17,6 +17,7 @@ object Main {
     val df2 = spark.read.parquet("data\\20240602_20240602_crash_ios_streaming_000000000000.parquet")
 
     df1.printSchema()
+    df1.select("event_timestamp").distinct().show(truncate = false)
 
     df1.createOrReplaceTempView("android")
     df2.createOrReplaceTempView("ios")
